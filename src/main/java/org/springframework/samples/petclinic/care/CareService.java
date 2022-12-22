@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.samples.petclinic.pet.PetType;
+import org.springframework.samples.petclinic.pet.Visit;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,7 @@ public class CareService {
 
     @Autowired
     CareProvisionRepository cpr;
+
     public List<Care> getAllCares(){
         return null;
     }
@@ -24,15 +26,22 @@ public class CareService {
     }
     
     public Care getCare(String careName) {
-        return null;
+        return cpr.findCareByName(careName);
     }
     
     public CareProvision save(CareProvision p) throws NonCompatibleCaresException, UnfeasibleCareException {        
+        
+        //Visit visit = p.getVisit();
+        //List<CareProvision> allCareProvisionsInVisit = cpr.findCaresProvidedByVisitId(p.getId());
+        //for (CareProvision cp: allCareProvisionsInVisit) {
+
+        //}
+
         return null;   
     }
 
     public List<CareProvision> getAllCaresProvided(){
-        return null;
+        return cpr.findAll();
     }
 
     public List<CareProvision> getCaresProvidedInVisitById(Integer visitId){
@@ -40,7 +49,7 @@ public class CareService {
 
     }
  
-    public Page<CareProvision> getPaginatedCareProvisions(Pageable pageable){
+    public Page<CareProvision> getPaginatedCareProvisions(Pageable pageable) {
         return null;
     }
 
